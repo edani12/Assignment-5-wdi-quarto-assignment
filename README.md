@@ -8,3 +8,6 @@ https://edani12.github.io/Assignment-5-wdi-quarto-assignment/report.html
 
 Slides:
 https://edani12.github.io/Assignment-5-wdi-quarto-assignment/slides.html
+
+Interactive Dashboard:
+https://edani12.github.io/Assignment-5-wdi-quarto-assignment/dashboard.html 
