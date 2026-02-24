@@ -1,0 +1,60 @@
+Task 10
+---
+title: "WDI Indicators: Key Findings"
+author: "Eshaan Dani"
+date: "2026-02-24"
+format:
+  revealjs:
+    theme: dark
+    css: slides.css
+    transition: fade
+output-file: slides
+---
+
+Task 8
+## Motivation
+
+- Explore development indicators from the World Bank WDI
+- Focus on GDP per capita, life expectancy, and inflation
+
+
+## Data
+
+- Dataset: World Development Indicators (WDI)
+- Unit of analysis: countries (and potentially years)
+
+
+## Key Findings
+
+- GDP per capita shows large dispersion across countries
+- Life expectancy is more tightly clustered
+- Inflation has outliers (high-volatility episodes)
+
+
+## Conclusion
+
+- Economic development correlates with health outcomes
+- Results motivate deeper country/region segmentation
+
+
+Task 9
+## GDP vs Life Expectancy
+
+```{python}
+#| echo: false
+#| label: fig-slides-gdp-life
+#| fig-cap: "GDP per capita vs life expectancy (WDI)."
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("wdi.csv")
+
+plt.figure()
+plt.scatter(df["life_expectancy"], df["gdp_per_capita"])
+plt.title("GDP per Capita vs Life Expectancy")
+plt.xlabel("life_expectancy")
+plt.ylabel("gdp_per_capita")
+plt.show()
+```
+

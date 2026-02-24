@@ -9,9 +9,15 @@ date: "2026-02-24"
 format:
   html: default
   pdf: default
+output-file: report
 execute:
     echo: false
+bibliography: references.bib
 ---
+
+WDI provides the macro indicators used in this report [@worldbank_wdi].
+
+The relationship between income and mortality/health outcomes has a long empirical history [@preston1975].
 
 Task 2
 ## Load the dataset
@@ -109,10 +115,11 @@ Task 4
 ## Figure: GDP per capita vs Life expectancy
 
 ```{python}
-# label: fig-gdp-life
-# fig-cap: "GDP per capita vs life expectancy. Source: World Bank WDI (see References)."
-# fig-alt: "Scatter plot of GDP per capita vs life expectancy"
+#| label: fig-gdp-life
+#| fig-cap: "GDP per capita vs life expectancy. Source: World Bank WDI (see References)."
+#| fig-alt: "Scatter plot of GDP per capita vs life expectancy"
 
+import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.read_csv("wdi.csv")
@@ -129,9 +136,9 @@ plt.show()
 ## Figure: Top 10 countries by GDP per capita
 
 ```{python}
-# label: fig-top10-gdp
-# fig-cap: "Top 10 countries by GDP per capita. Source: World Bank WDI (see References)."
-# fig-alt: "Bar chart of top 10 countries by GDP per capita"
+#| label: fig-top10-gdp
+#| fig-cap: "Top 10 countries by GDP per capita. Source: World Bank WDI (see References)."
+#| fig-alt: "Bar chart of top 10 countries by GDP per capita"
 
 top10 = df[["country", "gdp_per_capita"]].dropna().sort_values(
     "gdp_per_capita", ascending=False

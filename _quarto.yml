@@ -1,0 +1,15 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - report.qmd
+    - slides.qmd
+
+website:
+  title: "WDI Assignment"
+  navbar:
+    left:
+      - href: report.html
+        text: Report
+      - href: slides.html
+        text: Slides
