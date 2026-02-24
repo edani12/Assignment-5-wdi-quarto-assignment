@@ -1,0 +1,178 @@
+# Introduction
+
+This report analyzes the World Development Indicators dataset.
+
+---
+title: "WDI Analysis"
+author: "Eshaan Dani"
+date: "2026-02-24"
+format:
+  html: default
+  pdf: default
+execute:
+    echo: false
+---
+
+Task 2
+## Load the dataset
+
+```{python}
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv("wdi.csv")
+
+# Show first rows
+df.head()
+```
+
+Task 3
+# Exploratory Data Analysis
+
+In this section, I explore three indicators from the WDI dataset:
+- GDP per capita
+- Life expectancy
+- Inflation rate
+
+```{python}
+import pandas as pd
+
+df = pd.read_csv("wdi.csv")
+
+# quick check
+df.shape, df.columns
+```
+
+
+## Indicator 1: GDP per Capita
+
+GDP per capita measures economic output per person and is a common proxy for living standards.
+
+```{python}
+
+# summary stats
+df["gdp_per_capita"].describe()
+```
+
+```{python}
+
+# histogram
+df["gdp_per_capita"].plot(kind="hist", bins=30, title="GDP per Capita Distribution")
+```
+
+**Findings**
+- The spread of the histogram is very narrow, with manny countries close to 0
+- Right skew, as there are a few countries with very high GDP per Capital Distribution
+- There are 2 noticable outliers
+
+
+## Indicator 2: Life Expectancy
+
+Life expectancy reflects overall health outcomes and quality of life.
+
+```{python}
+# summary stats
+df["life_expectancy"].describe()
+```
+
+```{python}
+# histogram
+df["life_expectancy"].plot(kind="hist", bins=30, title="Life Expectancy Distribution")
+```
+
+**Findings**
+- The range seems to be very clustered around 70-80 years
+- More variability compared to GDP per capita
+- One clear outlier at 20 years
+
+
+## Indicator 3: Inflation Rate
+
+Inflation rate measures changes in price levels and can reflect macroeconomic stability.
+
+```{python}
+# summary stats
+df["inflation_rate"].describe()
+```
+
+```{python}
+# boxplot
+df[["inflation_rate"]].plot(kind="box", title="Inflation Rate (Boxplot)")
+```
+
+**Findings**
+- Inflation rates have extreme outliers from high-inflation countries
+- Most observations seem to be high at the 25-50% range
+- This shows that most countries are not economically stable
+
+Task 4
+## Figure: GDP per capita vs Life expectancy
+
+```{python}
+# label: fig-gdp-life
+# fig-cap: "GDP per capita vs life expectancy. Source: World Bank WDI (see References)."
+# fig-alt: "Scatter plot of GDP per capita vs life expectancy"
+
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("wdi.csv")
+
+plt.figure()
+plt.scatter(df["life_expectancy"], df["gdp_per_capita"])
+plt.title("GDP per Capita vs Life Expectancy")
+plt.xlabel("life_expectancy")
+plt.ylabel("gdp_per_capita")
+plt.show()
+```
+
+
+## Figure: Top 10 countries by GDP per capita
+
+```{python}
+# label: fig-top10-gdp
+# fig-cap: "Top 10 countries by GDP per capita. Source: World Bank WDI (see References)."
+# fig-alt: "Bar chart of top 10 countries by GDP per capita"
+
+top10 = df[["country", "gdp_per_capita"]].dropna().sort_values(
+    "gdp_per_capita", ascending=False
+).head(10)
+
+plt.figure()
+plt.bar(top10["country"], top10["gdp_per_capita"])
+plt.title("Top 10 Countries by GDP per Capita")
+plt.xlabel("Country")
+plt.ylabel("GDP per Capita")
+plt.xticks(rotation=45, ha="right")
+plt.tight_layout()
+plt.show()
+```
+
+
+Task 5
+## Table: Key statistics for selected indicators
+
+```{python}
+# label: tbl-key-stats
+# tbl-cap: "Key statistics for selected indicators. Source: World Bank WDI (see References)."
+
+import numpy as np
+
+indicators = ["gdp_per_capita", "life_expectancy", "inflation_rate"]
+
+desc = df[indicators].describe()  # has: count, mean, std, min, 25%, 50%, 75%, max
+median = df[indicators].median(numeric_only=True)
+
+# Add median as its own row, as pandas can't find "median" in the index
+desc.loc["median"] = median
+
+stats = desc.loc[["count", "mean", "std", "min", "median", "max"]].round(2)
+stats
+```
+
+
+Task 6
+As shown in @fig-gdp-life, countries with higher GDP per capita tend to have higher life expectancy.
+
+@fig-top10-gdp highlights how GDP per capita is concentrated among a small set of countries.
+
+Summary statistics are reported in @tbl-key-stats.
