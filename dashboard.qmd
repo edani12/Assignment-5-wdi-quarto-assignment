@@ -1,0 +1,60 @@
+---
+title: "WDI Interactive Dashboard"
+format:
+  dashboard:
+    theme: cosmo
+execute:
+  echo: false
+---
+
+
+## Overview {.column-width="full"}
+
+This dashboard provides an interactive look at key WDI indicators (hover, zoom, pan).
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+df = pd.read_csv("wdi.csv")
+```
+
+
+## Key Charts {.columns}
+
+### GDP vs Life Expectancy {.column}
+
+```{python}
+fig1 = px.scatter(
+    df,
+    x="life_expectancy",
+    y="gdp_per_capita",
+    hover_name="country",
+    title="GDP per Capita vs Life Expectancy",
+    labels={"gdp_per_capita":"GDP per Capita","life_expectancy":"Life Expectancy"}
+)
+fig1
+```
+
+
+### Inflation Distribution {.column}
+
+```{python}
+fig2 = px.histogram(
+    df,
+    x="inflation_rate",
+    nbins=30,
+    title="Inflation Rate Distribution",
+    labels={"inflation_rate":"Inflation Rate"}
+)
+fig2
+```
+
+
+## Table {.column-width="full"}
+
+```{python}
+# Show a searchable/sortable table (static HTML table)
+cols = ["country", "gdp_per_capita", "life_expectancy", "inflation_rate"]
+df[cols].dropna().head(20)
+```

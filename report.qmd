@@ -159,8 +159,8 @@ Task 5
 ## Table: Key statistics for selected indicators
 
 ```{python}
-# label: tbl-key-stats
-# tbl-cap: "Key statistics for selected indicators. Source: World Bank WDI (see References)."
+#| label: tbl-key-stats
+#| tbl-cap: "Key statistics for selected indicators. Source: World Bank WDI (see References)."
 
 import numpy as np
 

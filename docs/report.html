@@ -122,6 +122,10 @@ div.csl-indent {
     <a class="nav-link" href="./slides.html"> 
 <span class="menu-text">Slides</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dashboard.html"> 
+<span class="menu-text">Dashboard</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -176,7 +180,7 @@ div.csl-indent {
 <p>WDI provides the macro indicators used in this report <span class="citation" data-cites="worldbank_wdi">(<a href="#ref-worldbank_wdi" role="doc-biblioref">World Bank 2026</a>)</span>.</p>
 <p>The relationship between income and mortality/health outcomes has a long empirical history <span class="citation" data-cites="preston1975">(<a href="#ref-preston1975" role="doc-biblioref">Preston 1975</a>)</span>.</p>
 <p>Task 2 ## Load the dataset</p>
-<div id="c4bbc215" class="cell" data-execution_count="1">
+<div id="710f2142" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -295,7 +299,7 @@ div.csl-indent {
 </div>
 <p>Task 3 # Exploratory Data Analysis</p>
 <p>In this section, I explore three indicators from the WDI dataset: - GDP per capita - Life expectancy - Inflation rate</p>
-<div id="9c4f3bd0" class="cell" data-execution_count="2">
+<div id="0f2951e1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>((217, 14),
  Index(['country', 'inflation_rate', 'exports_gdp_share', 'gdp_growth_rate',
@@ -310,7 +314,7 @@ div.csl-indent {
 <section id="indicator-1-gdp-per-capita" class="level2">
 <h2 class="anchored" data-anchor-id="indicator-1-gdp-per-capita">Indicator 1: GDP per Capita</h2>
 <p>GDP per capita measures economic output per person and is a common proxy for living standards.</p>
-<div id="7d11967b" class="cell" data-execution_count="3">
+<div id="8f93cec7" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>count       209.000000
 mean      21142.747417
@@ -323,7 +327,7 @@ max      226052.001905
 Name: gdp_per_capita, dtype: float64</code></pre>
 </div>
 </div>
-<div id="8cef7908" class="cell" data-execution_count="4">
+<div id="da9d786c" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -337,7 +341,7 @@ Name: gdp_per_capita, dtype: float64</code></pre>
 <section id="indicator-2-life-expectancy" class="level2">
 <h2 class="anchored" data-anchor-id="indicator-2-life-expectancy">Indicator 2: Life Expectancy</h2>
 <p>Life expectancy reflects overall health outcomes and quality of life.</p>
-<div id="34d8e739" class="cell" data-execution_count="5">
+<div id="3d184b02" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>count    217.000000
 mean      73.108020
@@ -350,7 +354,7 @@ max       85.746000
 Name: life_expectancy, dtype: float64</code></pre>
 </div>
 </div>
-<div id="b0e62987" class="cell" data-execution_count="6">
+<div id="00b0e57a" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -364,7 +368,7 @@ Name: life_expectancy, dtype: float64</code></pre>
 <section id="indicator-3-inflation-rate" class="level2">
 <h2 class="anchored" data-anchor-id="indicator-3-inflation-rate">Indicator 3: Inflation Rate</h2>
 <p>Inflation rate measures changes in price levels and can reflect macroeconomic stability.</p>
-<div id="adc609c9" class="cell" data-execution_count="7">
+<div id="49fd1640" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>count    178.000000
 mean      12.645329
@@ -377,7 +381,7 @@ max      171.205491
 Name: inflation_rate, dtype: float64</code></pre>
 </div>
 </div>
-<div id="4822e937" class="cell" data-execution_count="8">
+<div id="ca799fd9" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -420,12 +424,18 @@ Figure&nbsp;2: Top 10 countries by GDP per capita. Source: World Bank WDI (see R
 </div>
 </div>
 <p>Task 5 ## Table: Key statistics for selected indicators</p>
-<div id="5d028ae9" class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="11">
+<div id="tbl-key-stats" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="11">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-key-stats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Key statistics for selected indicators. Source: World Bank WDI (see References).
+</figcaption>
+<div aria-describedby="tbl-key-stats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -477,9 +487,12 @@ Figure&nbsp;2: Top 10 countries by GDP per capita. Source: World Bank WDI (see R
 </div>
 </div>
 </div>
+</figure>
+</div>
+</div>
 <p>Task 6 As shown in <a href="#fig-gdp-life" class="quarto-xref">Figure&nbsp;1</a>, countries with higher GDP per capita tend to have higher life expectancy.</p>
 <p><a href="#fig-top10-gdp" class="quarto-xref">Figure&nbsp;2</a> highlights how GDP per capita is concentrated among a small set of countries.</p>
-<p>Summary statistics are reported in <strong>?@tbl-key-stats</strong>.</p>
+<p>Summary statistics are reported in <a href="#tbl-key-stats" class="quarto-xref">Table&nbsp;1</a>.</p>
 
 
 
