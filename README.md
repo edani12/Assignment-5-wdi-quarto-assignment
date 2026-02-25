@@ -1,6 +1,6 @@
 ## Published Pages
 
-URL of Repository created:
+URL of Repository Created:
 https://github.com/edani12/Assignment-5-wdi-quarto-assignment
 
 Both Report & Slide:
