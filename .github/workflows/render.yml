@@ -2,7 +2,7 @@ name: Render Quarto Site (docs)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -24,13 +24,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Python dependencies
+      - name: Install Python + Jupyter dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install "PyYAML>=6.0" jupyter nbformat nbclient ipykernel
           python -m pip install pandas matplotlib plotly numpy
-          python -m pip show PyYAML
-          python -m pip show jupyter
+          python -c "import yaml; print('yaml OK:', yaml.__version__)"
+          python -c "import jupyter; print('jupyter OK')"
 
       - name: Render site to docs/
         run: |
@@ -47,11 +47,3 @@ jobs:
             git commit -m "Auto-render site"
             git push
           fi
-
-      - name: Install TinyTeX (for PDF rendering)
-        run: |
-          quarto install tinytex
-
-python -m pip install --upgrade pip
-python -m pip install PyYAML jupyter nbformat nbclient ipykernel
-          
