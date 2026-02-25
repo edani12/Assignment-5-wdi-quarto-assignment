@@ -47,3 +47,7 @@ jobs:
             git commit -m "Auto-render site"
             git push
           fi
+
+      - name: Install TinyTeX (for PDF rendering)
+        run: |
+          quarto install tinytex
